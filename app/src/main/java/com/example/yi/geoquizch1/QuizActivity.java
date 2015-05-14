@@ -1,5 +1,6 @@
 package com.example.yi.geoquizch1;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,7 @@ public class QuizActivity extends ActionBarActivity {
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
+    private Button mCheatButton;
     private TextView mQuestionTextView;
 
     private TrueFalse[] mQuestionBank = new TrueFalse[]{
@@ -55,6 +57,16 @@ public class QuizActivity extends ActionBarActivity {
                 mCurrentIndex = (mCurrentIndex + 1)%mQuestionBank.length;
                 int question = mQuestionBank[mCurrentIndex].getQuestion();
                 mQuestionTextView.setText(question);
+            }
+        });
+
+
+        mCheatButton = (Button)findViewById(R.id.cheat_button);
+        mCheatButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(QuizActivity.this, CheatActivity.class);
+                startActivity(i);
             }
         });
     }
